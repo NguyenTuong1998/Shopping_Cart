@@ -17,6 +17,8 @@ import { Route, Switch } from "react-router-dom";
 import ProductDesciption from "feature/Product/components/ProductDesciption";
 import ProductAdditional from "feature/Product/components/ProductAdditional";
 import ProductReviews from "feature/Product/components/ProductReviews";
+import { useDispatch } from "react-redux";
+import { addToCart } from "feature/Cart/CartSlice";
 
 const useStyle = makeStyles((theme) => ({
   root: { paddingBottom: theme.spacing(4) },
@@ -38,6 +40,7 @@ const useStyle = makeStyles((theme) => ({
 }));
 const DetailPage = () => {
   const classes = useStyle();
+  const dispatch = useDispatch();
   const {
     params: { productId },
     url,
@@ -52,8 +55,14 @@ const DetailPage = () => {
     );
   }
 
-  const handleAddToCartSubmit = (formValues) => {
-    console.log("formSubmit", formValues);
+  const handleAddToCartSubmit = ({ quantity }) => {
+    const action = addToCart({
+      id: product.id,
+      product,
+      quantity,
+    });
+    console.log(action);
+    dispatch(action);
   };
   return (
     <Box className={classes.root}>

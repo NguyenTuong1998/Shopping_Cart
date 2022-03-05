@@ -1,14 +1,14 @@
 import { Box, Container, Grid, makeStyles, Paper } from "@material-ui/core";
+import Pagination from "@material-ui/lab/Pagination";
 import productApi from "api/productApi";
 import ProductList from "feature/Product/components/ProductList";
-import React, { useEffect, useState, useMemo } from "react";
-import ProductSkeleton from "../components/ProductSkeleton";
-import Pagination from "@material-ui/lab/Pagination";
-import ProductSort from "../components/ProductSort";
-import ProductFilters from "../components/ProductFilters";
-import FilterViewer from "../components/FilterViewer";
-import { useHistory, useLocation } from "react-router-dom";
 import querystring from "query-string";
+import React, { useEffect, useMemo, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import FilterViewer from "../components/FilterViewer";
+import ProductFilters from "../components/ProductFilters";
+import ProductSkeleton from "../components/ProductSkeleton";
+import ProductSort from "../components/ProductSort";
 const useStyle = makeStyles((theme) => ({
   root: {},
   left: {
